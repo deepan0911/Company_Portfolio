@@ -157,7 +157,10 @@ export function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground text-lg mb-1 group-hover:text-secondary transition-colors duration-300">Call Us</h3>
-                    <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">+1 (555) 123-4567</p>
+                    <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                      +91 93606 48801<br />
+                      +91 89460 40919
+                    </p>
                   </div>
                 </div>
               </CardContent>
@@ -175,7 +178,7 @@ export function Contact() {
                   <div>
                     <h3 className="font-semibold text-foreground text-lg mb-1 group-hover:text-accent-foreground transition-colors duration-300">Visit Us</h3>
                     <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
-                      123 Creative Street, DC 12345
+                      Coimbatore
                     </p>
                   </div>
                 </div>

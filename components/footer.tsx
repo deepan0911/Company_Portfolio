@@ -89,11 +89,11 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4" />
-                +1 (555) 123-4567
+                +91 93606 48801 / +91 89460 40919
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4" />
-                Design City, DC 12345
+                Coimbatore
               </li>
             </ul>
           </div>
