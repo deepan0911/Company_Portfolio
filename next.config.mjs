@@ -8,8 +8,10 @@ const nextConfig = {
   },
   devIndicators: {
     buildActivity: false,
+    buildActivityPosition: 'bottom-right',
     appIsrStatus: false,
   },
+  reactStrictMode: false,
 }
 
 export default nextConfig

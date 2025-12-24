@@ -26,7 +26,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 lg:py-24 px-4 lg:px-8 bg-muted/30">
+    <section id="contact" className="py-16 lg:py-24 px-4 lg:px-8 bg-muted">
       <div className="container mx-auto">
         <div className="max-w-2xl mx-auto text-center mb-12 lg:mb-16">
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4 text-balance">Let's Work Together</h2>

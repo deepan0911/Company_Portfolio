@@ -41,15 +41,13 @@ export function About() {
   const [activeStep, setActiveStep] = useState<number | null>(null)
 
   return (
-    <section id="about" className="py-24 lg:py-32 px-4 lg:px-8 bg-muted/50 relative overflow-hidden">
+    <section id="about" className="py-24 lg:py-32 px-4 lg:px-8 bg-background relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="animate-fadeInUp">
-            <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              Why Choose Us
-            </div>
+
             <h2 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 text-balance leading-tight">
               Excellence Meets Affordability
             </h2>

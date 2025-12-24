@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 export function Hero() {
   const scrollToSection = (id: string) => {
@@ -23,10 +23,7 @@ export function Hero() {
 
       <div className="container mx-auto relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-fadeInUp shadow-lg shadow-primary/5">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Enterprise-Grade Solutions at Affordable Prices</span>
-          </div>
+
 
           <h1
             className="text-5xl lg:text-7xl xl:text-8xl font-bold text-foreground mb-8 text-balance leading-[1.1] animate-fadeInUp"
