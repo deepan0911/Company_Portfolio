@@ -15,7 +15,11 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 
-export function AuthButton() {
+interface AuthButtonProps {
+  isScrolled?: boolean
+}
+
+export function AuthButton({ isScrolled = true }: AuthButtonProps) {
   const { data: session, status } = useSession()
   const router = useRouter()
   const [showLogoutDialog, setShowLogoutDialog] = useState(false)
@@ -46,13 +50,17 @@ export function AuthButton() {
       <div className="flex items-center gap-6">
         <button
           onClick={() => router.push("/auth/signin")}
-          className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-300"
+          className={`text-sm font-medium transition-colors duration-300 ${
+            isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
+          }`}
         >
           Sign In
         </button>
         <button
           onClick={() => router.push("/auth/signup")}
-          className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-300"
+          className={`text-sm font-medium transition-colors duration-300 ${
+            isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
+          }`}
         >
           Sign Up
         </button>
@@ -65,7 +73,9 @@ export function AuthButton() {
     <>
       <button
         onClick={() => setShowLogoutDialog(true)}
-        className="text-sm font-medium text-red-600 hover:text-red-700 transition-colors duration-300"
+        className={`text-sm font-medium transition-colors duration-300 ${
+          isScrolled ? "text-red-600 hover:text-red-700" : "text-red-400 hover:text-red-300"
+        }`}
       >
         Logout
       </button>

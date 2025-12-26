@@ -97,7 +97,7 @@ export function Header() {
           
           {/* Auth Button - right side (desktop) */}
           <div className="hidden md:block absolute right-4 lg:right-8">
-            <AuthButton />
+            <AuthButton isScrolled={isScrolled} />
           </div>
         </div>
 
@@ -130,7 +130,7 @@ export function Header() {
                 Contact
               </button>
               <div className="px-4 py-2 border-t border-border/50 mt-2 pt-4">
-                <AuthButton />
+                <AuthButton isScrolled={true} />
               </div>
             </nav>
           </div>

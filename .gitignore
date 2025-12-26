@@ -35,11 +35,6 @@ next-env.d.ts
 /data/*.json
 /data/*.backup.json
 
-# videos (large files)
-# /public/videos/*.mp4
-# /public/videos/*.webm
-# /public/videos/*.mov
-
 # IDE
 .vscode/
 .idea/
