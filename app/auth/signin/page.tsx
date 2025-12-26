@@ -12,7 +12,7 @@ import { toast } from "sonner"
 import { Mail, Lock, ArrowRight } from "lucide-react"
 import { GoogleIcon } from "@/components/google-icon"
 
-// Force dynamic rendering to avoid static generation issues with useSearchParams
+// Force dynamic rendering - required for useSearchParams() in Next.js 13+
 export const dynamic = 'force-dynamic'
 
 function SignInForm() {
