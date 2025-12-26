@@ -15,12 +15,6 @@ export function Footer() {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">F</span>
-              </div>
-              <span className="text-lg font-bold text-foreground">Freelance</span>
-            </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Professional freelancing services for all your digital and creative needs at affordable prices.
             </p>

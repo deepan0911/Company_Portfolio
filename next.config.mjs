@@ -6,11 +6,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  devIndicators: {
-    buildActivity: false,
-    buildActivityPosition: 'bottom-right',
-    appIsrStatus: false,
-  },
+  devIndicators: false,
   reactStrictMode: false,
 }
 

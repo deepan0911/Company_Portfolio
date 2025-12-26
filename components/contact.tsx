@@ -3,26 +3,75 @@
 import type React from "react"
 
 import { useState } from "react"
+import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { toast } from "sonner"
+import { Mail, Phone, MapPin, Send, LogIn } from "lucide-react"
 
 export function Contact() {
+  const { data: session, status } = useSession()
+  const router = useRouter()
+  
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    mobile: "",
     service: "",
     message: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleFieldClick = () => {
+    if (!session && status !== "loading") {
+      toast.error("Please sign in to use the contact form")
+      router.push(`/auth/signin?callbackUrl=${encodeURIComponent(window.location.pathname + '#contact')}`)
+    }
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
-    alert("Thank you for your message! We'll get back to you soon.")
-    setFormData({ name: "", email: "", service: "", message: "" })
+    
+    // Check if user is authenticated
+    if (!session) {
+      toast.error("Please sign in to submit the contact form")
+      router.push(`/auth/signin?callbackUrl=${encodeURIComponent(window.location.pathname + '#contact')}`)
+      return
+    }
+    
+    setIsSubmitting(true)
+    
+    try {
+      await toast.promise(
+        fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...formData,
+            email: session.user?.email, // Use logged-in user's email
+          }),
+        }).then(async (response) => {
+          if (!response.ok) {
+            throw new Error("Failed to send message")
+          }
+          return response.json()
+        }),
+        {
+          loading: "Sending your message...",
+          success: "Thank you for your message! We'll get back to you soon.",
+          error: "Failed to send message. Please try again.",
+        }
+      )
+      setFormData({ name: "", mobile: "", service: "", message: "" })
+    } catch (error) {
+      console.error("Form submission error:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -53,24 +102,10 @@ export function Contact() {
                       </label>
                       <Input
                         id="name"
-                        placeholder="John Doe"
+                        placeholder="Rahul Sharma"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        required
-                        className="transition-all duration-300 focus:scale-[1.02]"
-                        suppressHydrationWarning
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                        Email Address
-                      </label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="john@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onClick={handleFieldClick}
                         required
                         className="transition-all duration-300 focus:scale-[1.02]"
                         suppressHydrationWarning
@@ -78,19 +113,38 @@ export function Contact() {
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
-                      Service Interested In
-                    </label>
-                    <Input
-                      id="service"
-                      placeholder="e.g., Web Development, Logo Design"
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      required
-                      className="transition-all duration-300 focus:scale-[1.02]"
-                      suppressHydrationWarning
-                    />
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="mobile" className="block text-sm font-medium text-foreground mb-2">
+                        Mobile Number
+                      </label>
+                      <Input
+                        id="mobile"
+                        type="tel"
+                        placeholder="+91 98765 43210"
+                        value={formData.mobile}
+                        onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                        onClick={handleFieldClick}
+                        required
+                        className="transition-all duration-300 focus:scale-[1.02]"
+                        suppressHydrationWarning
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
+                        Service Interested In
+                      </label>
+                      <Input
+                        id="service"
+                        placeholder="e.g., Web Development, Logo Design"
+                        value={formData.service}
+                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                        onClick={handleFieldClick}
+                        required
+                        className="transition-all duration-300 focus:scale-[1.02]"
+                        suppressHydrationWarning
+                      />
+                    </div>
                   </div>
 
                   <div>
@@ -103,6 +157,7 @@ export function Contact() {
                       rows={6}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onClick={handleFieldClick}
                       required
                       className="transition-all duration-300 focus:scale-[1.01]"
                       suppressHydrationWarning
@@ -111,8 +166,9 @@ export function Contact() {
 
                   <Button 
                     type="submit" 
-                    size="lg" 
-                    className="w-full sm:w-auto group/btn shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-500 hover:scale-105 relative overflow-hidden"
+                    size="lg"
+                    disabled={isSubmitting}
+                    className="w-full sm:w-auto group/btn shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-500 hover:scale-105 relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                     suppressHydrationWarning
                   >
                     {/* Button shimmer effect */}
@@ -120,7 +176,9 @@ export function Contact() {
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
                     </div>
                     
-                    <span className="relative z-10 font-semibold">Send Message</span>
+                    <span className="relative z-10 font-semibold">
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </span>
                     <Send className="ml-2 w-4 h-4 relative z-10 transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:rotate-12" />
                   </Button>
                 </form>

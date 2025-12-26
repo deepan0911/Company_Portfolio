@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
+import { AuthButton } from "@/components/auth-button"
 import { Menu, X } from "lucide-react"
 
 export function Header() {
@@ -20,7 +20,7 @@ export function Header() {
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
-      setIsMobileMenuOpen(false)
+      setIsMobileMenuOpen(false) // Close mobile menu after clicking
     }
   }
 
@@ -32,102 +32,108 @@ export function Header() {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <div className="flex items-center" />
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation - centered */}
+          <nav className="hidden md:flex items-center gap-4 sm:gap-6 lg:gap-8 mx-auto">
             <button
               onClick={() => scrollToSection("services")}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-all duration-300 relative group/link"
+              className={`text-sm font-medium transition-all duration-300 relative group/link ${
+                isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
+              }`}
               suppressHydrationWarning
             >
               Services
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover/link:w-full transition-all duration-300" />
+              <span className={`absolute bottom-0 left-0 w-0 h-0.5 group-hover/link:w-full transition-all duration-300 ${
+                isScrolled ? "bg-primary" : "bg-blue-400"
+              }`} />
             </button>
             <button
               onClick={() => scrollToSection("about")}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-all duration-300 relative group/link"
+              className={`text-sm font-medium transition-all duration-300 relative group/link ${
+                isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
+              }`}
               suppressHydrationWarning
             >
               About
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover/link:w-full transition-all duration-300" />
+              <span className={`absolute bottom-0 left-0 w-0 h-0.5 group-hover/link:w-full transition-all duration-300 ${
+                isScrolled ? "bg-primary" : "bg-blue-400"
+              }`} />
             </button>
             <button
               onClick={() => scrollToSection("pricing")}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-all duration-300 relative group/link"
+              className={`text-sm font-medium transition-all duration-300 relative group/link ${
+                isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
+              }`}
               suppressHydrationWarning
             >
               Pricing
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover/link:w-full transition-all duration-300" />
+              <span className={`absolute bottom-0 left-0 w-0 h-0.5 group-hover/link:w-full transition-all duration-300 ${
+                isScrolled ? "bg-primary" : "bg-blue-400"
+              }`} />
             </button>
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-all duration-300 relative group/link"
+              className={`text-sm font-medium transition-all duration-300 relative group/link ${
+                isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
+              }`}
               suppressHydrationWarning
             >
               Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover/link:w-full transition-all duration-300" />
+              <span className={`absolute bottom-0 left-0 w-0 h-0.5 group-hover/link:w-full transition-all duration-300 ${
+                isScrolled ? "bg-primary" : "bg-blue-400"
+              }`} />
             </button>
           </nav>
 
-          <div className="hidden md:block">
-            <Button 
-              onClick={() => scrollToSection("contact")}
-              className="shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-500 hover:scale-105 relative overflow-hidden group/btn"
-            >
-              {/* Button shimmer effect */}
-              <div className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-700">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
-              </div>
-              <span className="relative z-10 font-semibold">Get Started</span>
-            </Button>
-          </div>
-
           {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors duration-300 rounded-lg hover:bg-primary/10"
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={`md:hidden p-2 transition-colors ${
+              isScrolled ? "text-foreground" : "text-white"
+            }`}
+            aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
+          
+          {/* Auth Button - right side (desktop) */}
+          <div className="hidden md:block absolute right-4 lg:right-8">
+            <AuthButton />
+          </div>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-border animate-fadeInUp">
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden py-4 bg-card/98 backdrop-blur-xl border-t border-border/50 shadow-lg">
+            <nav className="flex flex-col gap-2">
               <button
                 onClick={() => scrollToSection("services")}
-                className="text-left text-sm font-medium text-foreground/80 hover:text-primary transition-all duration-300 py-2 px-4 rounded-lg hover:bg-primary/5 hover:translate-x-1"
+                className="text-left px-4 py-3 text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors rounded-lg mx-2"
               >
                 Services
               </button>
               <button
                 onClick={() => scrollToSection("about")}
-                className="text-left text-sm font-medium text-foreground/80 hover:text-primary transition-all duration-300 py-2 px-4 rounded-lg hover:bg-primary/5 hover:translate-x-1"
+                className="text-left px-4 py-3 text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors rounded-lg mx-2"
               >
                 About
               </button>
               <button
                 onClick={() => scrollToSection("pricing")}
-                className="text-left text-sm font-medium text-foreground/80 hover:text-primary transition-all duration-300 py-2 px-4 rounded-lg hover:bg-primary/5 hover:translate-x-1"
+                className="text-left px-4 py-3 text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors rounded-lg mx-2"
               >
                 Pricing
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
-                className="text-left text-sm font-medium text-foreground/80 hover:text-primary transition-all duration-300 py-2 px-4 rounded-lg hover:bg-primary/5 hover:translate-x-1"
+                className="text-left px-4 py-3 text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors rounded-lg mx-2"
               >
                 Contact
               </button>
-              <Button 
-                onClick={() => scrollToSection("contact")} 
-                className="w-full shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-500"
-              >
-                Get Started
-              </Button>
-            </div>
-          </nav>
+              <div className="px-4 py-2 border-t border-border/50 mt-2 pt-4">
+                <AuthButton />
+              </div>
+            </nav>
+          </div>
         )}
       </div>
     </header>

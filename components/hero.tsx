@@ -12,7 +12,28 @@ export function Hero() {
   }
 
   return (
-    <section className="pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 lg:px-8 relative overflow-hidden bg-gradient-to-b from-background via-muted/30 to-background">
+    <section className="min-h-screen flex items-center justify-center px-4 lg:px-8 relative overflow-hidden">
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/hero-background.mp4" type="video/mp4" />
+        <source src="/videos/hero-background.webm" type="video/webm" />
+      </video>
+
+      {/* Watermark Cover - hides bottom-right watermark */}
+      <div className="absolute bottom-0 right-0 w-32 h-20 backdrop-blur-xl bg-gradient-to-tl from-black/40 to-transparent z-10" />
+
+      {/* Dark Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/60" />
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float" />
         <div
@@ -21,20 +42,20 @@ export function Hero() {
         />
       </div>
 
-      <div className="container mx-auto relative z-10">
+      <div className="container mx-auto relative z-10 py-20">
         <div className="max-w-5xl mx-auto text-center">
 
 
           <h1
-            className="text-5xl lg:text-7xl xl:text-8xl font-bold text-foreground mb-8 text-balance leading-[1.1] animate-fadeInUp"
+            className="text-4xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 text-balance leading-[1.1] animate-fadeInUp drop-shadow-lg"
             style={{ animationDelay: "0.1s" }}
           >
             Transform Your Vision Into
-            <span className="block text-primary mt-2">Digital Excellence</span>
+            <span className="block text-blue-400 mt-2">Digital Excellence</span>
           </h1>
 
           <p
-            className="text-lg lg:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto text-pretty leading-relaxed animate-fadeInUp"
+            className="text-lg lg:text-xl text-gray-200 mb-8 max-w-3xl mx-auto text-pretty leading-relaxed animate-fadeInUp drop-shadow-md"
             style={{ animationDelay: "0.2s" }}
           >
             Professional freelancing services spanning web development, mobile apps, software solutions, UI/UX design,
@@ -42,7 +63,7 @@ export function Hero() {
           </p>
 
           <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 animate-fadeInUp"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fadeInUp"
             style={{ animationDelay: "0.3s" }}
           >
             <Button
@@ -65,7 +86,7 @@ export function Hero() {
             </Button>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
               { value: "150+", label: "Projects Delivered", delay: "0.4s" },
               { value: "98%", label: "Client Satisfaction", delay: "0.5s" },
@@ -74,13 +95,13 @@ export function Hero() {
             ].map((stat, index) => (
               <div
                 key={index}
-                className="p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 animate-scaleIn group"
+                className="p-4 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 animate-scaleIn group"
                 style={{ animationDelay: stat.delay }}
               >
-                <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl lg:text-4xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300">
                   {stat.value}
                 </div>
-                <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
+                <div className="text-xs lg:text-sm text-muted-foreground font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
