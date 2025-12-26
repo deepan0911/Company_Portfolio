@@ -12,6 +12,9 @@ import { toast } from "sonner"
 import { Mail, Lock, ArrowRight } from "lucide-react"
 import { GoogleIcon } from "@/components/google-icon"
 
+// Force dynamic rendering to avoid static generation issues with useSearchParams
+export const dynamic = 'force-dynamic'
+
 function SignInForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
