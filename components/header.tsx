@@ -43,8 +43,8 @@ export function Header() {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo - left side */}
-          <div className="absolute left-4 lg:left-8">
+          {/* Logo - Desktop (left side) */}
+          <div className="hidden md:block absolute left-4 lg:left-8">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="flex items-center transition-transform duration-300 hover:scale-105"
@@ -57,6 +57,27 @@ export function Header() {
                 width={120}
                 height={40}
                 className={`h-8 lg:h-10 w-auto transition-all duration-500 ${
+                  useScrolledStyle ? "brightness-0 saturate-100" : "brightness-100"
+                }`}
+                priority
+              />
+            </button>
+          </div>
+
+          {/* Logo - Mobile (left side) */}
+          <div className="md:hidden absolute left-4">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex items-center transition-transform duration-300 hover:scale-105"
+              aria-label="Scroll to top"
+              suppressHydrationWarning
+            >
+              <Image
+                src="/WeBD-logo.png"
+                alt="WeBD Logo"
+                width={100}
+                height={33}
+                className={`h-7 w-auto transition-all duration-500 ${
                   useScrolledStyle ? "brightness-0 saturate-100" : "brightness-100"
                 }`}
                 priority
@@ -116,31 +137,10 @@ export function Header() {
             </button>
           </nav>
 
-          {/* Logo - mobile (left side) */}
-          <div className="md:hidden">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex items-center"
-              aria-label="Scroll to top"
-              suppressHydrationWarning
-            >
-              <Image
-                src="/WeBD-logo.png"
-                alt="WeBD Logo"
-                width={100}
-                height={33}
-                className={`h-7 w-auto transition-all duration-500 ${
-                  useScrolledStyle ? "brightness-0 saturate-100" : "brightness-100"
-                }`}
-                priority
-              />
-            </button>
-          </div>
-
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - right side */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 transition-colors ${
+            className={`md:hidden p-2 transition-colors absolute right-4 ${
               useScrolledStyle ? "text-foreground" : "text-white"
             }`}
             aria-label="Toggle menu"
