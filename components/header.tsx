@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 import Image from "next/image"
 import { AuthButton } from "@/components/auth-button"
 import { Menu, X } from "lucide-react"
@@ -8,11 +9,20 @@ import { Menu, X } from "lucide-react"
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+  
+  // Force scrolled state on non-home pages for visibility
+  const isHomePage = pathname === '/'
+  const useScrolledStyle = !isHomePage || isScrolled
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
     }
+    
+    // Check scroll position immediately on mount
+    handleScroll()
+    
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -28,7 +38,7 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "bg-card/95 backdrop-blur-xl shadow-lg border-b border-border/50" : "bg-transparent"
+        useScrolledStyle ? "bg-card/95 backdrop-blur-xl shadow-lg border-b border-border/50" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
@@ -46,7 +56,9 @@ export function Header() {
                 alt="WeBD Logo"
                 width={120}
                 height={40}
-                className="h-8 lg:h-10 w-auto"
+                className={`h-8 lg:h-10 w-auto transition-all duration-500 ${
+                  useScrolledStyle ? "brightness-0 saturate-100" : "brightness-100"
+                }`}
                 priority
               />
             </button>
@@ -57,49 +69,49 @@ export function Header() {
             <button
               onClick={() => scrollToSection("services")}
               className={`text-sm font-medium transition-all duration-300 relative group/link ${
-                isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
+                useScrolledStyle ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
               }`}
               suppressHydrationWarning
             >
               Services
               <span className={`absolute bottom-0 left-0 w-0 h-0.5 group-hover/link:w-full transition-all duration-300 ${
-                isScrolled ? "bg-primary" : "bg-blue-400"
+                useScrolledStyle ? "bg-primary" : "bg-blue-400"
               }`} />
             </button>
             <button
               onClick={() => scrollToSection("about")}
               className={`text-sm font-medium transition-all duration-300 relative group/link ${
-                isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
+                useScrolledStyle ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
               }`}
               suppressHydrationWarning
             >
               About
               <span className={`absolute bottom-0 left-0 w-0 h-0.5 group-hover/link:w-full transition-all duration-300 ${
-                isScrolled ? "bg-primary" : "bg-blue-400"
+                useScrolledStyle ? "bg-primary" : "bg-blue-400"
               }`} />
             </button>
             <button
               onClick={() => scrollToSection("pricing")}
               className={`text-sm font-medium transition-all duration-300 relative group/link ${
-                isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
+                useScrolledStyle ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
               }`}
               suppressHydrationWarning
             >
               Pricing
               <span className={`absolute bottom-0 left-0 w-0 h-0.5 group-hover/link:w-full transition-all duration-300 ${
-                isScrolled ? "bg-primary" : "bg-blue-400"
+                useScrolledStyle ? "bg-primary" : "bg-blue-400"
               }`} />
             </button>
             <button
               onClick={() => scrollToSection("contact")}
               className={`text-sm font-medium transition-all duration-300 relative group/link ${
-                isScrolled ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
+                useScrolledStyle ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
               }`}
               suppressHydrationWarning
             >
               Contact
               <span className={`absolute bottom-0 left-0 w-0 h-0.5 group-hover/link:w-full transition-all duration-300 ${
-                isScrolled ? "bg-primary" : "bg-blue-400"
+                useScrolledStyle ? "bg-primary" : "bg-blue-400"
               }`} />
             </button>
           </nav>
@@ -117,7 +129,9 @@ export function Header() {
                 alt="WeBD Logo"
                 width={100}
                 height={33}
-                className="h-7 w-auto"
+                className={`h-7 w-auto transition-all duration-500 ${
+                  useScrolledStyle ? "brightness-0 saturate-100" : "brightness-100"
+                }`}
                 priority
               />
             </button>
@@ -127,7 +141,7 @@ export function Header() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`md:hidden p-2 transition-colors ${
-              isScrolled ? "text-foreground" : "text-white"
+              useScrolledStyle ? "text-foreground" : "text-white"
             }`}
             aria-label="Toggle menu"
           >
@@ -136,7 +150,7 @@ export function Header() {
           
           {/* Auth Button - right side (desktop) */}
           <div className="hidden md:block absolute right-4 lg:right-8">
-            <AuthButton isScrolled={isScrolled} />
+            <AuthButton isScrolled={useScrolledStyle} />
           </div>
         </div>
 
