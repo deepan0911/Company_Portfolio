@@ -112,6 +112,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -120,10 +121,12 @@
 /* Added premium animation keyframes for Google-style sophisticated effects */
 @layer utilities {
   @keyframes float {
+
     0%,
     100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-20px);
     }
@@ -134,6 +137,7 @@
       opacity: 0;
       transform: translateY(30px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -145,9 +149,42 @@
       opacity: 0;
       transform: scale(0.9);
     }
+
     to {
       opacity: 1;
       transform: scale(1);
+    }
+  }
+
+  @keyframes logoIntro {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+
+    80% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+      pointer-events: none;
     }
   }
 
@@ -161,5 +198,13 @@
 
   .animate-scaleIn {
     animation: scaleIn 0.6s ease-out forwards;
+  }
+
+  .animate-logoIntro {
+    animation: logoIntro 5s ease-out forwards;
+  }
+
+  .animate-fadeOut {
+    animation: fadeOut 5s ease-out forwards;
   }
 }

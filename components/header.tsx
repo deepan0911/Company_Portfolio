@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { AuthButton } from "@/components/auth-button"
 import { Menu, X } from "lucide-react"
 
@@ -32,6 +33,25 @@ export function Header() {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
+          {/* Logo - left side */}
+          <div className="absolute left-4 lg:left-8">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex items-center transition-transform duration-300 hover:scale-105"
+              aria-label="Scroll to top"
+              suppressHydrationWarning
+            >
+              <Image
+                src="/WeBD-logo.png"
+                alt="WeBD Logo"
+                width={120}
+                height={40}
+                className="h-8 lg:h-10 w-auto"
+                priority
+              />
+            </button>
+          </div>
+
           {/* Desktop Navigation - centered */}
           <nav className="hidden md:flex items-center gap-4 sm:gap-6 lg:gap-8 mx-auto">
             <button
@@ -83,6 +103,25 @@ export function Header() {
               }`} />
             </button>
           </nav>
+
+          {/* Logo - mobile (left side) */}
+          <div className="md:hidden">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex items-center"
+              aria-label="Scroll to top"
+              suppressHydrationWarning
+            >
+              <Image
+                src="/WeBD-logo.png"
+                alt="WeBD Logo"
+                width={100}
+                height={33}
+                className="h-7 w-auto"
+                priority
+              />
+            </button>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
