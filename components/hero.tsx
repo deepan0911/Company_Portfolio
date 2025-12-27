@@ -133,23 +133,49 @@ export function Hero() {
             }`}
             style={{ transitionDelay: showContent ? "0.3s" : "0s" }}
           >
+            {/* Primary CTA Button - Start Your Project */}
             <Button
               size="lg"
               onClick={() => scrollToSection("contact")}
-              className="w-full sm:w-auto text-base px-8 py-6 shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300"
+              className="group relative w-full sm:w-auto text-base font-semibold px-10 py-7 bg-gradient-to-r from-primary via-primary to-blue-600 hover:from-blue-600 hover:via-primary hover:to-primary shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all duration-500 overflow-hidden border-0 hover:scale-105"
               suppressHydrationWarning
             >
-              Start Your Project
-              <ArrowRight className="ml-2 w-5 h-5" />
+              {/* Shimmer Effect */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              
+              {/* Button Content */}
+              <span className="relative z-10 flex items-center gap-2">
+                Start Your Project
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+              
+              {/* Glow Effect */}
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary to-blue-600 blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
             </Button>
+
+            {/* Secondary Button - Explore Services */}
             <Button
               size="lg"
               variant="outline"
               onClick={() => scrollToSection("services")}
-              className="w-full sm:w-auto text-base px-8 py-6 hover:bg-primary/5 transition-all duration-300"
+              className="group relative w-full sm:w-auto text-base font-semibold px-10 py-7 bg-white/10 backdrop-blur-md border-2 border-white/30 text-white hover:bg-white hover:text-gray-900 hover:border-white shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden hover:scale-105"
               suppressHydrationWarning
             >
-              Explore Services
+              {/* Shimmer Effect */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+              
+              {/* Button Content */}
+              <span className="relative z-10 flex items-center gap-2">
+                Explore Services
+                <svg 
+                  className="w-5 h-5 group-hover:rotate-90 transition-transform duration-500" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
             </Button>
           </div>
 

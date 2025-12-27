@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
 
 export const metadata: Metadata = {
-  title: "Freelance Portfolio - Affordable Web & Design Services",
+  title: "WeBD - Affordable Web & Design Services",
   description:
     "Professional freelancing services including web development, mobile apps, UI/UX design, brand design, and more at affordable prices",
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import { Mail, Phone, MapPin } from "lucide-react"
+import Link from "next/link"
 
 export function Footer() {
   const scrollToSection = (id: string) => {
@@ -64,13 +65,55 @@ export function Footer() {
 
           <div>
             <h3 className="font-semibold text-foreground mb-4">Services</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Web Development</li>
-              <li>Mobile Apps</li>
-              <li>UI/UX Design</li>
-              <li>Brand Design</li>
-              <li>Graphics & Posters</li>
-              <li>Logo Design</li>
+            <ul className="space-y-2">
+              <li>
+                <Link 
+                  href="/services/web-development"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Web Development
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/services/mobile-app-development"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Mobile Apps
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/services/ui-ux-design"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  UI/UX Design
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/services/brand-design"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Brand Design
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/services/poster-graphics"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Graphics & Posters
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/services/logo-design"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Logo Design
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -96,15 +139,15 @@ export function Footer() {
         <div className="pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Freelance. All rights reserved.
+              © {new Date().getFullYear()} WeBD. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              </Link>
+              <Link href="/terms-of-service" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>
