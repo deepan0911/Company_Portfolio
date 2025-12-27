@@ -113,7 +113,7 @@ export function Services() {
   // Auto-play carousel
   useEffect(() => {
     if (!isHovered) {
-      const interval = setInterval(goToNext, 5000)
+      const interval = setInterval(goToNext, 3000)
       return () => clearInterval(interval)
     }
   }, [isHovered, currentIndex])
@@ -134,10 +134,10 @@ export function Services() {
     position?: 'left' | 'center' | 'right'
   }) => (
     <Card
-      className={`relative overflow-hidden border-border/50 transition-all duration-700 bg-card/50 backdrop-blur-sm ${
+      className={`relative overflow-hidden border-border/50 transition-all duration-700 bg-card/50 backdrop-blur-sm h-full w-full min-h-[600px] flex flex-col justify-between ${
         isActive 
-          ? 'group cursor-pointer hover:border-primary/30 shadow-2xl hover:shadow-3xl scale-100 opacity-100 z-10' 
-          : 'shadow-lg scale-90 opacity-30 blur-sm pointer-events-none'
+          ? 'group cursor-pointer hover:border-primary/30 shadow-2xl hover:shadow-3xl opacity-100 z-10' 
+          : 'shadow-lg opacity-40 pointer-events-none'
       }`}
     >
       {isActive && (
@@ -155,46 +155,46 @@ export function Services() {
         </>
       )}
 
-      <CardContent className={`${isActive ? 'p-10 lg:p-16' : 'p-8 lg:p-12'} relative z-10 text-center`}>
-        {/* Icon container */}
-        <div
-          className={`${isActive ? 'w-20 h-20 lg:w-24 lg:h-24' : 'w-16 h-16 lg:w-20 lg:h-20'} rounded-3xl ${service.bgColor} flex items-center justify-center ${isActive ? 'mb-8' : 'mb-6'} shadow-lg ${isActive ? 'group-hover:shadow-2xl' : ''} transition-all duration-700 relative overflow-hidden mx-auto`}
-        >
-          {isActive && <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />}
-          
-          <service.icon
-            className={`${isActive ? 'w-10 h-10 lg:w-12 lg:h-12' : 'w-8 h-8 lg:w-10 lg:h-10'} ${service.color} transition-all duration-700 relative z-10 ${isActive ? 'group-hover:scale-110 group-hover:rotate-6' : ''}`}
-          />
+      <CardContent className="p-8 lg:p-12 relative z-10 text-center flex-grow flex flex-col justify-between">
+        <div className="flex-grow flex flex-col items-center">
+          {/* Icon container */}
+          <div
+            className={`w-20 h-20 lg:w-24 lg:h-24 rounded-3xl ${service.bgColor} flex items-center justify-center mb-8 shadow-lg ${isActive ? 'group-hover:shadow-2xl' : ''} transition-all duration-700 relative overflow-hidden mx-auto`}
+          >
+            {isActive && <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />}
+            
+            <service.icon
+              className={`w-10 h-10 lg:w-12 lg:h-12 ${service.color} transition-all duration-700 relative z-10 ${isActive ? 'group-hover:scale-110 group-hover:rotate-6' : ''}`}
+            />
+          </div>
+
+          {/* Title */}
+          <h3 className={`text-2xl lg:text-4xl mb-6 font-bold text-foreground ${isActive ? 'group-hover:text-primary' : ''} transition-all duration-500`}>
+            {service.title}
+          </h3>
+
+          {/* Description */}
+          <p className={`text-base lg:text-lg text-muted-foreground leading-relaxed ${isActive ? 'group-hover:text-foreground/90' : ''} transition-all duration-500 max-w-xl mx-auto mb-8`}>
+            {service.description}
+          </p>
         </div>
 
-        {/* Title */}
-        <h3 className={`${isActive ? 'text-2xl lg:text-4xl mb-6' : 'text-xl lg:text-2xl mb-4'} font-bold text-foreground ${isActive ? 'group-hover:text-primary' : ''} transition-all duration-500`}>
-          {service.title}
-        </h3>
+        {/* Learn more button - always present but hidden if not active */}
+        <div className={`flex items-center justify-center gap-2 text-primary font-medium transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'}`}>
+          <span className="text-base">Learn more</span>
+          <svg
+            className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
 
-        {/* Description */}
-        <p className={`${isActive ? 'text-base lg:text-lg' : 'text-sm lg:text-base'} text-muted-foreground leading-relaxed ${isActive ? 'group-hover:text-foreground/90' : ''} transition-all duration-500 max-w-xl mx-auto ${isActive ? 'mb-8' : ''}`}>
-          {service.description}
-        </p>
-
+        {/* Bottom corner accent */}
         {isActive && (
-          <>
-            {/* Animated CTA */}
-            <div className="flex items-center justify-center gap-2 text-primary font-medium opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-3 group-hover:translate-y-0">
-              <span className="text-base">Learn more</span>
-              <svg
-                className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-
-            {/* Bottom corner accent */}
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-tl-full" />
-          </>
+          <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-tl-full" />
         )}
       </CardContent>
     </Card>
@@ -223,12 +223,13 @@ export function Services() {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative max-w-7xl mx-auto px-4 lg:px-20">
+        <div className="relative max-w-7xl mx-auto px-4 lg:px-4">
           {/* Navigation Buttons - Enhanced Professional Design */}
           <button
             onClick={goToPrev}
             className="absolute left-0 lg:left-4 top-1/2 -translate-y-1/2 z-30 group"
             aria-label="Previous service"
+            suppressHydrationWarning
           >
             <div className="relative w-14 h-14 lg:w-16 lg:h-16">
               {/* Gradient background */}
@@ -248,6 +249,7 @@ export function Services() {
             onClick={goToNext}
             className="absolute right-0 lg:right-4 top-1/2 -translate-y-1/2 z-30 group"
             aria-label="Next service"
+            suppressHydrationWarning
           >
             <div className="relative w-14 h-14 lg:w-16 lg:h-16">
               {/* Gradient background */}
@@ -265,22 +267,24 @@ export function Services() {
 
           {/* Cards Container with Backdrop Cards */}
           <div 
-            className="relative grid grid-cols-1 lg:grid-cols-[1fr_2.5fr_1fr] gap-4 lg:gap-6 items-center"
+            className="relative grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             {/* Left Backdrop Card - Hidden on mobile */}
-            <div className="hidden lg:block">
+            <div className="hidden lg:block h-full w-full">
               <ServiceCard service={prevService} position="left" />
             </div>
 
             {/* Center Active Card */}
-            <Link href={`/services/${currentService.slug}`} key={currentIndex} className="animate-fadeInScale">
-              <ServiceCard service={currentService} isActive={true} position="center" />
-            </Link>
+            <div className="h-full w-full">
+              <Link href={`/services/${currentService.slug}`} key={currentIndex} className="h-full w-full block">
+                <ServiceCard service={currentService} isActive={true} position="center" />
+              </Link>
+            </div>
 
             {/* Right Backdrop Card - Hidden on mobile */}
-            <div className="hidden lg:block">
+            <div className="hidden lg:block h-full w-full">
               <ServiceCard service={nextService} position="right" />
             </div>
           </div>
@@ -296,6 +300,7 @@ export function Services() {
                 }}
                 className="group relative"
                 aria-label={`Go to service ${index + 1}`}
+                suppressHydrationWarning
               >
                 <div
                   className={`h-2 rounded-full transition-all duration-500 ${

@@ -129,13 +129,7 @@ export function About() {
                           {step.description}
                         </p>
 
-                        {/* Animated arrow indicator */}
-                        <div className="mt-3 flex items-center gap-2 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-[-10px] group-hover:translate-x-0">
-                          <span>View details</span>
-                          <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
+
                       </div>
 
                       {/* Active step indicator */}

@@ -144,6 +144,7 @@ export function Header() {
               useScrolledStyle ? "text-foreground" : "text-white"
             }`}
             aria-label="Toggle menu"
+            suppressHydrationWarning
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
