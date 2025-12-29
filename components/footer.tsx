@@ -42,15 +42,7 @@ export function Footer() {
                   About
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection("pricing")}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  suppressHydrationWarning
-                >
-                  Pricing
-                </button>
-              </li>
+
               <li>
                 <button
                   onClick={() => scrollToSection("contact")}

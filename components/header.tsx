@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
+import Link from "next/link"
 import { AuthButton } from "@/components/auth-button"
 import { Menu, X } from "lucide-react"
 
@@ -45,10 +46,10 @@ export function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo - Desktop (left side) */}
           <div className="hidden md:block absolute left-4 lg:left-8">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            <Link
+              href="/"
               className="flex items-center transition-transform duration-300 hover:scale-105"
-              aria-label="Scroll to top"
+              aria-label="Home"
               suppressHydrationWarning
             >
               <Image
@@ -61,15 +62,15 @@ export function Header() {
                 }`}
                 priority
               />
-            </button>
+            </Link>
           </div>
 
           {/* Logo - Mobile (left side) */}
           <div className="md:hidden absolute left-4">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            <Link
+              href="/"
               className="flex items-center transition-transform duration-300 hover:scale-105"
-              aria-label="Scroll to top"
+              aria-label="Home"
               suppressHydrationWarning
             >
               <Image
@@ -82,7 +83,7 @@ export function Header() {
                 }`}
                 priority
               />
-            </button>
+            </Link>
           </div>
 
           {/* Desktop Navigation - centered */}
@@ -111,18 +112,7 @@ export function Header() {
                 useScrolledStyle ? "bg-primary" : "bg-blue-400"
               }`} />
             </button>
-            <button
-              onClick={() => scrollToSection("pricing")}
-              className={`text-sm font-medium transition-all duration-300 relative group/link ${
-                useScrolledStyle ? "text-foreground/80 hover:text-primary" : "text-white/90 hover:text-blue-400"
-              }`}
-              suppressHydrationWarning
-            >
-              Pricing
-              <span className={`absolute bottom-0 left-0 w-0 h-0.5 group-hover/link:w-full transition-all duration-300 ${
-                useScrolledStyle ? "bg-primary" : "bg-blue-400"
-              }`} />
-            </button>
+
             <button
               onClick={() => scrollToSection("contact")}
               className={`text-sm font-medium transition-all duration-300 relative group/link ${
@@ -171,12 +161,7 @@ export function Header() {
               >
                 About
               </button>
-              <button
-                onClick={() => scrollToSection("pricing")}
-                className="text-left px-4 py-3 text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors rounded-lg mx-2"
-              >
-                Pricing
-              </button>
+
               <button
                 onClick={() => scrollToSection("contact")}
                 className="text-left px-4 py-3 text-base font-medium text-foreground hover:bg-primary/10 hover:text-primary transition-colors rounded-lg mx-2"
