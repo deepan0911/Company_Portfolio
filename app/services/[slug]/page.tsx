@@ -38,12 +38,12 @@ const serviceDetails = {
       {
         title: "Global Financial Dashboard",
         description: "A real-time data visualization platform for a leading financial MNC.",
-        image: "/web_dev_example_1766565782509.png"
+        image: "/images/services/web-development-1.png"
       },
       {
         title: "E-Commerce Ecosystem",
         description: "Scalable marketplace with complex inventory management and payment integrations.",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+        image: "/images/services/web-development-2.png"
       }
     ]
   },
@@ -70,12 +70,12 @@ const serviceDetails = {
       {
         title: "Luxury Travel Concierge",
         description: "A premium mobile experience for high-net-worth travelers.",
-        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800"
+        image: "/images/services/mobile-app-development-1.png"
       },
       {
         title: "Health & Fitness Tracker",
         description: "Real-time sync with wearables and personalized health insights.",
-        image: "https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&q=80&w=800"
+        image: "/images/services/mobile-app-development-2.png"
       }
     ]
   },
@@ -100,14 +100,14 @@ const serviceDetails = {
     ],
     examples: [
       {
-        title: "MNC Design System",
-        description: "A comprehensive design language for a global tech organization.",
+        title: "Apple Ecosystem UI Design",
+        description: "A comprehensive design system for a global tech organization.",
         image: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800"
       },
       {
         title: "SaaS Product Interface",
         description: "Modern, clean dashboard for complex data management.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+        image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&q=80&w=800"
       }
     ]
   },
@@ -134,12 +134,12 @@ const serviceDetails = {
       {
         title: "Enterprise Logistics Portal",
         description: "A centralized system for global supply chain management.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+        image: "/images/services/software-development-1.png"
       },
       {
         title: "Retail Automation Hub",
         description: "Automated inventory and sales tracking across 200+ global locations.",
-        image: "https://images.unsplash.com/photo-1558444479-c8f010528c3a?auto=format&fit=crop&q=80&w=800"
+        image: "/images/services/software-development-2.png"
       }
     ]
   },
@@ -164,14 +164,14 @@ const serviceDetails = {
     ],
     examples: [
       {
-        title: "Tech Unicorn Rebrand",
+        title: "Minimalist Tech Rebrand",
         description: "A fresh, energetic identity for a rapidly growing Silicon Valley firm.",
-        image: "https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&q=80&w=800"
+        image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=800"
       },
       {
         title: "Modern FinTech Identity",
         description: "Trustworthy and clean branding for a digital banking disruptive.",
-        image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800"
+        image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800"
       }
     ]
   },
@@ -198,12 +198,12 @@ const serviceDetails = {
       {
         title: "Tech Summit Campaign",
         description: "A set of high-impact posters for an international AI conference.",
-        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800"
+        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800"
       },
       {
         title: "Product Launch Series",
         description: "Dynamic social media graphics for a global gadget release.",
-        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800"
+        image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=800"
       }
     ]
   },
@@ -230,12 +230,12 @@ const serviceDetails = {
       {
         title: "Eco-Tech Innovation",
         description: "A minimalist, green-focused mark for a sustainable tech company.",
-        image: "https://images.unsplash.com/photo-1626785774625-ddc7c82a1e5c?auto=format&fit=crop&q=80&w=800"
+        image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800"
       },
       {
         title: "Fashion Label Mark",
         description: "Elegant and sophisticated monogram for a luxury boutique.",
-        image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800"
+        image: "https://images.unsplash.com/photo-1541462608141-ad603831414c?auto=format&fit=crop&q=80&w=800"
       }
     ]
   },
@@ -292,14 +292,14 @@ const serviceDetails = {
     ],
     examples: [
       {
-        title: "Automated Workflow Engine",
+        title: "Advanced Processor Integration",
         description: "A custom internal system that reduced manual work by 60%.",
-        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800"
+        image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800"
       },
       {
         title: "Secure Data Warehouse",
         description: "Scalable and high-performance data lake for an analytics firm.",
-        image: "https://images.unsplash.com/photo-1558494949-ef0109121c60?auto=format&fit=crop&q=80&w=800"
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
       }
     ]
   }
